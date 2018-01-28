@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+<script>
+    function changeCode() {
+        var var1 = document.getElementById('codeImg');
+        var1.src = 'verification?' + new Date();
+    }
+</script>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{login}" method="post">
+    <table align="center">
+        <caption>登录</caption>
+        <tr>
+            <td>用户名：</td>
+            <td><input type="text" name="uname"/></td>
+        </tr>
+        <tr>
+            <td>密码：</td>
+            <td><input type="password" name="password"/></td>
+        </tr>
+        <tr>
+            <td>验证码：</td>
+            <td><input type="text" name="code"/></td>
+            <td><img id="codeImg" th:src="@{verification}" onclick="changeCode()"/></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="提交"/></td>
+            <td><input type="reset" value="重置"/></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
